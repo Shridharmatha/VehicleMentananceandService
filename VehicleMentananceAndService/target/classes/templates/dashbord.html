@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicle Service Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/navbar.css}">
+    
+    
+     
+    <link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/jquery.validation/1.19.5/jquery.validate.min.js"></script>
+    
+    
+    <style>
+        body {
+            scroll-behavior: smooth;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+        }
+        
+        .carousel-inner img {
+            height: 400px;
+            object-fit: cover;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            transition: 0.3s;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        footer {
+            background: #111;
+        }
+        .section-heading {
+            font-weight: bold;
+            font-size: 2.5rem;
+        }
+        .card i {
+            transition: transform 0.3s;
+        }
+        .card:hover i {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+
+<div th:replace="~{header :: navbar}"></div>
+
+<!-- NAVBAR -->
+
+<script th:if="${statustype != null}">
+                var statusmessage = "[[${statusmessage}]]";
+                var statustype = "[[${statustype}]]";
+
+                toastr.options = {
+                    "closeButton": true,
+                    "progressBar": true,
+                    "timeOut": "5000",
+                    "positionClass": "toast-top-center",
+                    "newestOnTop": true,
+                    "preventDuplicates": true
+                };
+                if (statustype === "success") {
+                    toastr.success(statusmessage);
+                } else if (statustype === "error") {
+                    toastr.error(statusmessage);
+                }
+            </script>
+
+
+<!-- CAROUSEL -->
+<div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://media.istockphoto.com/id/1714398321/photo/hand-of-mechanic-holding-car-icon.jpg?s=612x612&w=0&k=20&c=Fuum1i2l0kNP1iNReUqPL2iX7xOKJNecZWd5hOcwT0M=" class="d-block w-100" alt="Slide 1">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="text-light bg-dark bg-opacity-75 p-2 rounded">Manage Services Effortlessly</h5>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="https://media.istockphoto.com/id/496038712/photo/car-in-hand.jpg?s=612x612&w=0&k=20&c=D9KAf180KqlwyOC6p_mPgk2fFTxCkdE-v4UF0IqDjAo=" class="d-block w-100" alt="Slide 2">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="text-light bg-dark bg-opacity-75 p-2 rounded">Track Maintenance History</h5>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="https://media.istockphoto.com/id/1347560304/photo/car-protection-care-and-insurance-concept-over-hand-with-graphic-graphs.jpg?s=612x612&w=0&k=20&c=lNVQSNvQuijjWhXpBZszP4LhLOQ4XjD45yi-hhTE0g0=" class="d-block w-100" alt="Slide 3">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="text-light bg-dark bg-opacity-75 p-2 rounded">Locate Verified Service Centers</h5>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
+
+<!-- SERVICES SECTION -->
+<section class="py-5 bg-light">
+    <div class="container text-center">
+        <h2 class="section-heading mb-5" data-aos="fade-up">Our Services</h2>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="zoom-in">
+                <div class="card h-100 shadow text-center">
+                    <div class="card-body">
+                        <i class="bi bi-calendar-check display-4 text-primary mb-3"></i>
+                        <h5 class="card-title">Appointment Booking</h5>
+                        <p class="card-text">Book service appointments easily with nearby centers.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                <div class="card h-100 shadow text-center">
+                    <div class="card-body">
+                        <i class="bi bi-clock-history display-4 text-success mb-3"></i>
+                        <h5 class="card-title">Service History</h5>
+                        <p class="card-text">Access full history of past vehicle services.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="card h-100 shadow text-center">
+                    <div class="card-body">
+                        <i class="bi bi-building-check display-4 text-danger mb-3"></i>
+                        <h5 class="card-title">Authorized Centers</h5>
+                        <p class="card-text">Locate verified and trusted service centers.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+                <div class="card h-100 shadow text-center">
+                    <div class="card-body">
+                        <i class="bi bi-car-front-fill display-4 text-warning mb-3"></i>
+                        <h5 class="card-title">Vehicle Inspection</h5>
+                        <p class="card-text">Book complete health checks for your vehicle.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
+                <div class="card h-100 shadow text-center">
+                    <div class="card-body">
+                        <i class="bi bi-tools display-4 text-info mb-3"></i>
+                        <h5 class="card-title">Repair Services</h5>
+                        <p class="card-text">Engine, brakes, transmission and more repairs.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="500">
+                <div class="card h-100 shadow text-center">
+                    <div class="card-body">
+                        <i class="bi bi-fuel-pump-fill display-4 text-secondary mb-3"></i>
+                        <h5 class="card-title">Fuel Management</h5>
+                        <p class="card-text">Track fuel consumption and efficiency logs.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="600">
+                <div class="card h-100 shadow text-center">
+                    <div class="card-body">
+                        <i class="bi bi-battery-charging display-4 text-primary mb-3"></i>
+                        <h5 class="card-title">Battery Services</h5>
+                        <p class="card-text">Battery health checkup and replacement support.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="700">
+                <div class="card h-100 shadow text-center">
+                    <div class="card-body">
+                        <i class="bi bi-droplet-fill display-4 text-danger mb-3"></i>
+                        <h5 class="card-title">Oil Change</h5>
+                        <p class="card-text">Schedule regular oil checks and engine servicing.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="800">
+                <div class="card h-100 shadow text-center">
+                    <div class="card-body">
+                        <i class="bi bi-card-checklist display-4 text-success mb-3"></i>
+                        <h5 class="card-title">Service Reminders</h5>
+                        <p class="card-text">Get alerts for upcoming service dates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="py-5 bg-white">
+    <div class="container">
+        <h2 class="section-heading text-center mb-4" data-aos="fade-up">About Our Company</h2>
+        <p class="lead text-center" data-aos="fade-up" data-aos-delay="100">
+          Vehicle Maintenance and Service is essential to keep a vehicle running efficiently and safely.
+          It involves routine checks, oil changes, tire rotations, and brake inspections.
+          Regular maintenance helps prevent unexpected breakdowns and costly repairs.
+          It ensures the engine, transmission, and other components function optimally.
+          Scheduled servicing improves fuel efficiency and extends vehicle lifespan.
+          Proper maintenance reduces environmental pollution from emissions.
+          It maintains the resale value of the vehicle over time.
+          Technicians also diagnose potential issues before they become major problems.
+          Service history tracking helps owners stay on top of their vehicle’s health.
+          Ultimately, maintenance is an investment in performance, safety, and peace of mind.
+        </p>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<div th:replace="~{footer :: footer}"></div>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
+</body>
+</html>
