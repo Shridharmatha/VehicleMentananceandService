@@ -115,6 +115,14 @@
     <artifactId>jakarta.mail</artifactId>
     <version>1.6.7</version> <!-- ✅ stable for Spring Boot -->
 </dependency>
+
+
+<dependency>
+  <groupId>org.postgresql</groupId>
+  <artifactId>postgresql</artifactId>
+  <version>42.7.3</version> <!-- or the latest stable version -->
+</dependency>
+
         
         
     </dependencies>
