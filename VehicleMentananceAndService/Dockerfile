@@ -1,16 +1,11 @@
-# Stage 1: Build the WAR using Maven
-FROM maven:3.8.1-openjdk-17 AS builder
+# Stage 1: Build the JAR file
+FROM maven:3.8.6-openjdk-11-slim AS builder
 WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
-# Stage 2: Run WAR in Tomcat
-FROM tomcat:9.0
-RUN rm -rf /usr/local/tomcat/webapps/*
-COPY --from=builder /app/target/VehicleMentananceAndService.war /usr/local/tomcat/webapps/ROOT.war
-
-# Expose the port for the Tomcat server
-EXPOSE 8080
-
-# Run Tomcat
-CMD ["catalina.sh", "run"]
+# Stage 2: Run the JAR file
+FROM openjdk:11-jre-slim
+WORKDIR /app
+COPY --from=builder /app/target/your-app-name.jar your-app-name.jar
+ENTRYPOINT ["java", "-jar", "/VehicleMentananceAndService.jar"]
