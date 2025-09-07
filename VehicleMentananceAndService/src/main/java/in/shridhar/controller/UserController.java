@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -130,7 +131,10 @@ public class UserController {
 			model.addAttribute("uname",session.getAttribute("uname"));
 			model.addAttribute("umail",session.getAttribute("umail"));
 			model.addAttribute("uphone",session.getAttribute("uphone"));
-			
+			model.addAttribute("uid",session.getAttribute("uid"));
+			model.addAttribute("uroll", session.getAttribute("uroll"));
+			System.out.println(session.getAttribute("uid"));
+			System.out.println(session.getAttribute("uroll"));
 			System.out.println(session.getAttribute("uname"));
 			
 			if(entity.getUmail().equals("shridhar3584@gmail.com") && entity.getUpass().equals("12345678"))
@@ -171,8 +175,14 @@ public class UserController {
 		
 		return page;
 	}
+	@PreAuthorize("hasRole('ADMIN')")
+	@GetMapping("alll")
+	public List<User> getAllUsers()
+	{
+		return use.getAllUsers();
+	}
 	
-
+	//@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("all")
 	public String allusers(Model model)
 	{

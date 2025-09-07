@@ -29,6 +29,7 @@ public class User {
 	private String upass;
 	@Column(name="uaddress")
 	private String uaddress;
-	
+	@Column(name="uroll")
+	private String uroll;
 
 }

@@ -26,5 +26,8 @@ public interface UserService {
 
 	boolean checkUserpass(String upass);
 
+	List<User> getAllUsers();
+	
+   
 
 }

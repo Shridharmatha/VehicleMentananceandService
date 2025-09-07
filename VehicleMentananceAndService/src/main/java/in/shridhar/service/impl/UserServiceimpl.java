@@ -65,6 +65,8 @@ public class UserServiceimpl implements UserService{
 	        session.setAttribute("umail", user.getUmail());
 	        session.setAttribute("uname", user.getUname());
 	        session.setAttribute("uphone", user.getUphone());
+	        session.setAttribute("uid", user.getUid());
+	        session.setAttribute("uroll", user.getUroll());
 
 	        result = "success";
 	    } else {
@@ -81,6 +83,12 @@ public class UserServiceimpl implements UserService{
 		
 		return list;
 	}
+	
+	@Override
+	public List<User> getAllUsers()
+	{
+		return Userrepo.findAll();
+	}
 
 	@Override
 	public Optional<User> getuser(int uid) {
@@ -88,6 +96,8 @@ public class UserServiceimpl implements UserService{
 	
 		
 	}
+
+	
 	
 	
 
